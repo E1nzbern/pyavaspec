@@ -24,7 +24,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-      - run: uv sync --locked
+      - run: uv sync
       - run: uv run ruff check .
       - run: uv run ruff format --check .
       - run: uv run mypy
@@ -44,7 +44,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           enable-cache: true
-      - run: uv sync --locked
+      - run: uv sync
       - run: >-
           uv run pytest
           --cov=pyavaspec
@@ -59,7 +59,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
         with:
           enable-cache: true
-      - run: uv sync --locked
+      - run: uv sync
       - run: uv build
       - run: uvx twine check dist/*
       - run: uv run python scripts/check_dist.py

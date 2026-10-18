@@ -1,3 +1,6 @@
+# 本地开发锁文件；CI 按 pyproject.toml 从官方 PyPI 重新解析，不提交
+uv.lock
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

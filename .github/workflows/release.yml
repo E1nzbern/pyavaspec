@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: "3.12"
           enable-cache: true
-      - run: uv sync --locked
+      - run: uv sync
 
       - name: Verify git tag matches package version
         run: |
