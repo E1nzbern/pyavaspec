@@ -55,6 +55,12 @@ include = [
     "/pyproject.toml",
 ]
 
+# 锁定文件使用官方 PyPI，避免地域镜像地址导致 CI 无法下载
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
+
 [dependency-groups]
 dev = [
     "ipykernel>=7.4.0",
