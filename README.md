@@ -1,5 +1,7 @@
 # PyAvaSpec: Pythonic wrapper for Avantes AvaSpec spectrometers
 
+[![PyPI](https://img.shields.io/pypi/v/pyavaspec.svg)](https://pypi.org/project/pyavaspec/)
+
 Avantes AvaSpec 光谱仪的 Pythonic 控制库。
 执行连接设备、采集光谱、扣除暗谱、计算吸光度等操作。
 
