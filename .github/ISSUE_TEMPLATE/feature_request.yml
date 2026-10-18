@@ -1,0 +1,51 @@
+name: Feature request
+description: 建议新增能力或改进 API（设备配置、采集控制、通信诊断等）
+title: "[feature] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢提出改进建议！
+        
+        **提 issue 前请知悉：**
+        - 本库定位为基于官方 avaspecx64.dll 的 Avantes 光谱仪控制和通信抽象层。
+        - 纯光谱数据算法处理，如平滑滤波、化学计量学建模通常不属于本库核心范围。
+        - 当前 `0.1.x` 处于早期阶段，非常欢迎在接口语义、上下文管理、多通道支持等方面提出反馈。
+
+  - type: input
+    id: environment
+    attributes:
+      label: 涉及的硬件与使用场景
+      description: 建议注明光谱仪型号、通信方式（USB、Ethernet）及是否为多通道。
+      placeholder: 例如：AvaSpec-ULS2048CL-EVO (USB 3.0), 单通道, 外部硬件触发场景
+    validations:
+      required: false
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 痛点与背景
+      description: 当前的 API 或封装在什么场景下难以使用或存在限制？请描述具体场景，暂不需要给出底层实现代码。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 期望的 API 调用方式
+      description: 请给出一段伪代码或 Python 示例，展示你心目中最直观、优雅的调用方式。
+      render: python
+      placeholder: |
+        # 期望的调用逻辑示例
+        ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 考虑过的替代方案
+      description: 你目前是如何绕过这个限制的？或者官方软件是如何提供此能力的？
+    validations:
+      required: false

@@ -1,0 +1,103 @@
+name: Bug report
+description: 报告可复现的问题（崩溃、返回码异常、采集数值异常等）
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前请先看 [Troubleshooting 故障排查文档](https://github.com/E1nzbern/pyavaspec/blob/main/docs/troubleshooting.md)，
+        
+        硬件和 DLL 交互问题依赖运行环境，请务必完整提供下方信息，否则通常无法在无同款设备的情况下进行排查。
+
+  - type: checkboxes
+    id: pre-check
+    attributes:
+      label: 提交前自查（关键）
+      options:
+        - label: 测试时已完全关闭官方 **AvaSoft** 或 **AvaSoftX** 软件，且任务管理器中无残留的 Python 等进程占用设备
+          required: true
+        - label: 已确认设备供电与 USB、网线物理连接正常
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 发生了什么？预期的行为是什么？
+    validations:
+      required: true
+  
+  - type: textarea
+    id: traceback
+    attributes:
+      label: 完整报错信息
+      description: 请粘贴完整的 Python 异常堆栈（Traceback）。如果进程发生崩溃直接退出，请注明 Exit Code 或崩溃现象。
+      render: text
+      placeholder: |
+        Traceback (most recent call last):
+          File "test.py", line 12, in <module>
+            ...
+        # 若崩溃直接闪退，可注明：进程直接退出，退出码 0xC0000005 (Access Violation)
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 最小复现代码
+      description: 能独立运行的最小代码片段。请勿粘贴庞大的业务工程代码。
+      render: python
+      placeholder: |
+        from pyavaspec import Spectrometer
+
+        with Spectrometer() as spec:
+            spec.prepare_measurement(...)
+            data = spec.measure()
+    validations:
+      required: true
+
+  - type: input
+    id: hardware_info
+    attributes:
+      label: 硬件设备和连接方式
+      description: 包含光谱仪型号和通信链路。
+      placeholder: "AvaSpec-ULS2048CL-EVO, 原装 USB 3.0 直连（非拓展坞）"
+    validations:
+      required: true
+
+  - type: input
+    id: env_and_dll
+    attributes:
+      label: 系统、Python 和 DLL 版本
+      description: 请标明操作系统、Python 版本（需包含位数 64-bit）及调用的 DLL 文件来源。
+      placeholder: "Windows 11 23H2, Python 3.12.3 64-bit, pyavaspec 0.1.0, avaspecx64.dll (v9.14.0.0 来自 AvaSoft 9.14)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 设备诊断信息（推荐附带）
+      description: |
+        如果设备尚可握手连接，请运行并附带以下诊断输出：
+        ```python
+        from pyavaspec import Spectrometer
+        from pyavaspec.features import device_report
+
+        with Spectrometer() as spec:
+            print(device_report(spec).as_dict())
+        ```
+      render: json
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 确认
+      options:
+        - label: 已确认问题可以在本机稳定复现
+          required: true
+        - label: 已搜索过现有 issue
+          required: true

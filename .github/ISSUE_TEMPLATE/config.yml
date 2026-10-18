@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 使用问题 / 排障
+    url: https://github.com/E1nzbern/pyavaspec/blob/main/docs/troubleshooting.md
+    about: DLL 加载失败、找不到设备、设备被占用、错误返回码等问题，请先在此自助排查。
+  
+  - name: 使用疑问与技术交流 (Discussions)
+    url: https://github.com/E1nzbern/pyavaspec/discussions
+    about: 如果你不确定是不是 Bug，或者想探讨 API 最佳实践、硬件选型等问题，请移步讨论区。
