@@ -88,7 +88,7 @@ def _load_windows(path: str) -> Any:
         _DLL_DIR_SEEN.add(directory)
         with contextlib.suppress(OSError):  # 目录无效时通过 WinDLL 报错
             _DLL_DIR_HANDLES.append(add(directory))
-    return ctypes.WinDLL(path)
+    return ctypes.WinDLL(path)  # type: ignore[attr-defined, unused-ignore]
 
 
 _LOADERS["win32"] = _load_windows
